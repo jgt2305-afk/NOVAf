@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f8fc">
+  <title>Nova — your web, in one place</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="/scramjet/scramjet.js"></script>
+  <script src="/controller/controller.api.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#home" aria-label="Nova home"><span class="brand-mark">✳</span><span>nova</span></a>
+    <nav class="browser-tabs" id="browser-tabs" aria-label="Browser tabs"></nav>
+    <button class="new-tab" id="new-tab" aria-label="Open a new tab" title="New tab">＋</button>
+    <span class="profile-button" title="Your space" aria-label="Your space">J</span>
+  </header>
+  <div class="browser-toolbar">
+    <div class="nav-actions">
+      <button class="toolbar-button" id="go-back" title="Back" aria-label="Back">←</button>
+      <button class="toolbar-button" id="go-forward" title="Forward" aria-label="Forward">→</button>
+      <button class="toolbar-button" id="reload-page" title="Reload" aria-label="Reload">⟳</button>
+      <button class="toolbar-button home-button" id="go-home" title="Home" aria-label="Home">⌂</button>
+    </div>
+    <form id="address-form" class="address-form" role="search">
+      <span class="address-lock" id="connection-mark">◉</span>
+      <input id="address-input" type="text" placeholder="Search or enter a website address" autocomplete="off" spellcheck="false" aria-label="Search or enter a website address">
+      <span class="toolbar-provider"><span class="ddg-mark">●</span> DDG</span>
+      <button class="address-go" type="submit" aria-label="Go">↗</button>
+    </form>
+    <div class="connection-status" id="connection-status"><span></span> Starting proxy</div>
+    <button class="error-toggle" id="error-toggle" type="button" aria-expanded="false" aria-controls="error-panel">Errors <span id="error-count">0</span></button>
+  </div>
+
+  <div id="browser-stage">
+    <main id="home-view" class="page-shell">
+      <section class="hero" aria-labelledby="welcome-title">
+        <div class="eyebrow"><span class="status-dot"></span> NOVA BROWSER</div>
+        <h1 id="welcome-title">Search the web<span>.</span></h1>
+        <p class="hero-copy">Type a search or paste a website address.</p>
+        <form class="search-box" id="search-form" role="search">
+          <span class="search-icon" aria-hidden="true">⌕</span>
+          <input id="search-input" type="search" placeholder="Search the web or enter a URL" autocomplete="off" aria-label="Search the web or enter a URL">
+          <span class="search-provider"><span class="ddg-mark">●</span> DuckDuckGo</span>
+          <button class="search-submit" type="submit" aria-label="Search">↗</button>
+        </form>
+        <div class="search-hint"><span>↵</span> to search</div>
+      </section>
+
+      <section class="content-section apps-section" aria-labelledby="apps-heading">
+        <div class="section-heading">
+          <div><p class="section-kicker">QUICK LINKS</p><h2 id="apps-heading">Your apps</h2></div>
+        </div>
+        <div class="app-grid" id="app-grid">
+          <a class="app-card" href="https://www.youtube.com/" data-open-url="https://www.youtube.com/"><span class="app-icon youtube">▶</span><span>YouTube</span><span class="launch-arrow">↗</span></a>
+          <a class="app-card" href="https://www.tiktok.com/" data-open-url="https://www.tiktok.com/"><span class="app-icon tiktok">♪</span><span>TikTok</span><span class="launch-arrow">↗</span></a>
+          <a class="app-card" href="https://www.netflix.com/" data-open-url="https://www.netflix.com/"><span class="app-icon netflix">N</span><span>Netflix</span><span class="launch-arrow">↗</span></a>
+          <a class="app-card" href="https://open.spotify.com/" data-open-url="https://open.spotify.com/"><span class="app-icon spotify">♫</span><span>Spotify</span><span class="launch-arrow">↗</span></a>
+          <a class="app-card" href="https://www.twitch.tv/" data-open-url="https://www.twitch.tv/"><span class="app-icon twitch">▣</span><span>Twitch</span><span class="launch-arrow">↗</span></a>
+          <a class="app-card" href="https://www.reddit.com/" data-open-url="https://www.reddit.com/"><span class="app-icon reddit">●</span><span>Reddit</span><span class="launch-arrow">↗</span></a>
+          <a class="app-card" href="https://www.instagram.com/" data-open-url="https://www.instagram.com/"><span class="app-icon instagram">◎</span><span>Instagram</span><span class="launch-arrow">↗</span></a>
+          <a class="app-card" href="https://discord.com/" data-open-url="https://discord.com/"><span class="app-icon discord">◉</span><span>Discord</span><span class="launch-arrow">↗</span></a>
+        </div>
+      </section>
+
+      <section class="content-section media-section" aria-labelledby="media-heading">
+        <div class="section-heading media-heading">
+          <div><p class="section-kicker">MEDIA</p><h2 id="media-heading">Watch and listen</h2></div>
+        </div>
+        <div class="media-grid">
+          <a class="media-card video-card" href="https://www.youtube.com/" data-open-url="https://www.youtube.com/"><div class="media-art art-video"><span class="art-orb orb-one"></span><span class="art-orb orb-two"></span><span class="play-button">▶</span><span class="art-label">VIDEO</span></div><div class="media-info"><div><h3>YouTube</h3><p>Videos for whatever you're into</p></div><span class="media-arrow">↗</span></div></a>
+          <a class="media-card short-card" href="https://www.tiktok.com/" data-open-url="https://www.tiktok.com/"><div class="media-art art-short"><span class="short-lines">♪<br>♪</span><span class="art-label">SHORTS</span><span class="short-caption">little things<br>big laughs</span></div><div class="media-info"><div><h3>One more scroll?</h3><p>Quick videos on TikTok</p></div><span class="media-arrow">↗</span></div></a>
+          <a class="media-card music-card" href="https://open.spotify.com/" data-open-url="https://open.spotify.com/"><div class="media-art art-music"><div class="equalizer"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="art-label">LISTEN</span><span class="music-note">♫</span></div><div class="media-info"><div><h3>Set the mood</h3><p>Find your next favorite on Spotify</p></div><span class="media-arrow">↗</span></div></a>
+        </div>
+      </section>
+      <footer><span>✳</span> Nova</footer>
+    </main>
+    <div id="frames" aria-live="off"></div>
+  </div>
+  <section class="error-panel" id="error-panel" aria-label="Proxy errors" hidden>
+    <header class="error-panel-header">
+      <div><p class="section-kicker">DIAGNOSTICS</p><h2>Error log</h2></div>
+      <div class="error-panel-actions"><button id="clear-errors" type="button">Clear list</button><button id="close-errors" type="button" aria-label="Close error list">×</button></div>
+    </header>
+    <p class="error-log-help">Shows the error text reported by Nova, the proxy transport, or the local server.</p>
+    <h3 class="error-list-title">Latest reports</h3>
+    <div class="error-list" id="error-list" aria-live="polite"></div>
+  </section>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script type="module" src="/script.js"></script>
+</body>
+</html>
